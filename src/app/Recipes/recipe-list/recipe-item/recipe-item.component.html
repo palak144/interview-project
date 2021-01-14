@@ -1,0 +1,12 @@
+<a
+style="cursor:pointer" 
+[routerLink] = "[index]"
+routerLinkActive="acive">
+    <mat-card class="example-card" >
+        <mat-card-header>
+          <mat-card-title>{{recipeProperty.name}}</mat-card-title>
+          <mat-card-subtitle>{{recipeProperty.desc}}</mat-card-subtitle>
+          <img mat-card-avatar class="example-header-image" [src] ="recipeProperty.imagePath">
+        </mat-card-header>
+      </mat-card>   
+</a>

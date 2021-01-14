@@ -1,0 +1,61 @@
+<div class="row margin">
+    <div class="col-xs-12">
+        <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-xs-12">
+                        <button class="margin" mat-raised-button color="primary" type="submit" [disabled]="!recipeForm.valid">Save</button>
+                        <button class="margin" mat-raised-button color="warn" type="button" (click)="onCancel()">Cancel</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <mat-label for="name">Name</mat-label>
+                     <input matInput formControlName="name" id="name" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <mat-label for="imagePath">Image Url</mat-label>
+                     <input matInput formControlName="imagePath" id="imagePath" class="form-control" #imagePath>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <img [src]="imagePath.value" class="img-responsive">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <mat-label for="desc">Description</mat-label>
+                     <textarea matInput formControlName="desc" id="desc" class="form-control" rows="6"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12" formArrayName="ingredients">
+                    <div class="row margin" [formGroupName]="i" *ngFor="let ingredientCtrl of controls; let i = index">
+                        <div class="col-xs-8">
+                            <input matInput type="text" class="form-control" formControlName="name">
+                        </div>
+                        <div class="col-xs-2">
+                            <input matInput type="number" class="form-control" formControlName="amount">
+                        </div>
+                        <div class="col-xs-2">
+                            <button mat-raised-button color="warn" type="button" (click)="onDeleteIngredient(i)">X</button>
+                        </div>
+                    </div>
+                    <div class="row margin">
+                        <div class="col-xs-12">
+                            <button mat-raised-button color="primary" type="button" (click)="onAddIngredient()">Add Ingredient</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
